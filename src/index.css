@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    overscroll-behavior: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Scrollbar custom dark */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded-full;
+  }
+}
+
+@layer components {
+  /* Bottom sheet animation */
+  .sheet-enter {
+    animation: sheet-up 0.25s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+  .sheet-exit {
+    animation: sheet-down 0.2s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+
+  @keyframes sheet-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+  @keyframes sheet-down {
+    from { transform: translateY(0); }
+    to   { transform: translateY(100%); }
+  }
+
+  /* Fade transition entre pages */
+  .page-enter {
+    animation: fade-in 0.15s ease forwards;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
