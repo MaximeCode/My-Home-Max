@@ -5,7 +5,6 @@ services:
   frontend:
     container_name: my-home-max-prod
     build:
-      context: ./web
       dockerfile: Dockerfile
       args:
         # Même origine que Traefik : Nginx proxyfie /api et /socket.io
