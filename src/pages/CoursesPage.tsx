@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Plus, RotateCcw, ShoppingBasket, AlertTriangle, Trash2 } from 'lucide-react'
 import { Layout } from '@/components/Layout'
-import { Fab, Button, ConfirmDialog, EmptyState } from '@/components/ui'
+import { Fab, ConfirmDialog, EmptyState } from '@/components/ui'
 import { useGroceries } from '@/features/courses/hooks/useGroceries'
 import { GroceryForm } from '@/features/courses/components/GroceryForm'
 import { GroceryItemRow } from '@/features/courses/components/GroceryItemRow'

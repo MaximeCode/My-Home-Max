@@ -1,6 +1,5 @@
 import { ChevronLeft, ChevronRight, CalendarDays } from 'lucide-react'
 import { formatMonthLabel, currentYearMonth, buildMonthId } from '@/utils'
-import { Button } from '@/components/ui'
 
 interface MonthNavigatorProps {
   year: number

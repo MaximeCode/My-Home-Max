@@ -24,7 +24,6 @@ export function TodoPage() {
     getDoneTasksForGroup,
     collapsedGroups,
     toggleGroupCollapse,
-    activeTaskCount,
   } = useTodo()
 
   // ─── UI state ──────────────────────────────────────────────────────────────
