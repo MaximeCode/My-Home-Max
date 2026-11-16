@@ -19,7 +19,7 @@ export function Layout({ title, children, headerRight, showBack = true }: Layout
   const navigate = useNavigate()
 
   return (
-    <div className="flex flex-col h-dvh max-w-[430px] mx-auto bg-slate-950">
+    <div className="flex flex-col h-dvh max-w-107.5 mx-auto bg-slate-950">
       {/* Header fixe */}
       <header className="flex items-center gap-3 px-4 py-3 bg-slate-900 border-b border-slate-800 shrink-0">
         {showBack && (

@@ -38,7 +38,7 @@ export function BottomSheet({ isOpen, onClose, title, children }: BottomSheetPro
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end max-w-[430px] mx-auto">
+    <div className="fixed inset-0 z-50 flex flex-col justify-end max-w-107.5 mx-auto">
       {/* Overlay */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"

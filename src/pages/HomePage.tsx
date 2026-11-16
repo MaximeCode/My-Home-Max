@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { Wallet, CheckSquare, ShoppingCart, type LucideIcon } from 'lucide-react'
 import { budgetStorage, todoStorage, groceriesStorage } from '@/storage'
 import { formatCurrency, currentYearMonth, buildMonthId } from '@/utils'
+import { PwaInstallBanner } from '@/components/PwaInstallBanner'
 
 // ─── Données de résumé par module ─────────────────────────────────────────────
 
@@ -85,6 +86,9 @@ export function HomePage() {
         </p>
         <h1 className="text-2xl font-bold text-slate-100">Bonjour, Max</h1>
       </header>
+
+      {/* Bandeau installation PWA */}
+      <PwaInstallBanner />
 
       {/* Cards */}
       <main className="flex-1 px-4 pb-8 flex flex-col gap-3 overflow-y-auto">

@@ -63,7 +63,7 @@ export function Fab({ onClick, icon, label }: FabProps) {
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="fixed bottom-6 right-1/2 translate-x-[215px] z-40
+      className="fixed bottom-12 right-4 z-40
         flex items-center justify-center w-14 h-14
         bg-indigo-600 hover:bg-indigo-500 active:scale-95
         text-white rounded-full shadow-lg shadow-indigo-900/50
@@ -192,7 +192,7 @@ export function ConfirmDialog({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center max-w-[430px] mx-auto px-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center max-w-107.5 mx-auto px-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onCancel} />
       <div className="relative z-10 w-full bg-slate-900 rounded-2xl p-5 shadow-xl border border-slate-800">
         <h3 className="text-base font-semibold text-slate-100 mb-2">{title}</h3>
