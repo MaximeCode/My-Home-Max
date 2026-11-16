@@ -77,7 +77,7 @@ export function HomePage() {
   const coursesSummary = useCoursesSummary()
 
   return (
-    <div className="flex flex-col h-dvh max-w-[430px] mx-auto bg-slate-950">
+    <div className="flex flex-col h-dvh max-w-107.5 mx-auto bg-slate-950">
       {/* Header sans bouton retour */}
       <header className="px-4 py-5 shrink-0">
         <p className="text-xs font-medium text-slate-500 uppercase tracking-widest mb-1">
