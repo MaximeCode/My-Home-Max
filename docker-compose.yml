@@ -1,0 +1,40 @@
+name: "my-home-max-preprod"
+
+services:
+  # ── Frontend React (Vite build → Nginx) ───────────────────────────────────
+  frontend:
+    container_name: my-home-max
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        # URL publique de l'app (utilisée pour les QR codes)
+        VITE_APP_URL: https://preprod.my-home-max.duckdns.org
+        # En prod/preprod, le frontend et le backend partagent le même domaine
+        # Le frontend appelle /api/* et /socket.io/* via nginx → vide = même origine
+
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+      # Domaine frontend préprod
+      - "traefik.http.routers.my-home-max.rule=Host(`my-home-max.duckdns.org`)"
+      - "traefik.http.routers.my-home-max.entrypoints=websecure"
+
+      # HTTPS Let's Encrypt
+      - "traefik.http.routers.my-home-max.tls=true"
+      - "traefik.http.routers.my-home-max.tls.certresolver=letsencrypt"
+
+      # Port Nginx interne
+      - "traefik.http.services.my-home-max.loadbalancer.server.port=80"
+
+      # Basic Auth (préprod uniquement)
+      - "traefik.http.routers.my-home-max.middlewares=preprod-auth@file"
+
+    networks:
+      - max_network
+
+networks:
+  max_network:
+    external: true

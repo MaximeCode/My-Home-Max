@@ -1,0 +1,35 @@
+name: "my-home-max-prod"
+
+services:
+  # ── Frontend React (Vite build → Nginx) ───────────────────────────────────
+  frontend:
+    container_name: my-home-max-prod
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      args:
+        # Même origine que Traefik : Nginx proxyfie /api et /socket.io
+        VITE_APP_URL: https://my-home-max.duckdns.org
+
+    restart: unless-stopped
+
+    labels:
+      - "traefik.enable=true"
+
+      # Domaine frontend prod (DuckDNS)
+      - "traefik.http.routers.my-home-max-prod.rule=Host(`my-home-max.duckdns.org`)"
+      - "traefik.http.routers.my-home-max-prod.entrypoints=websecure"
+
+      # HTTPS Let's Encrypt
+      - "traefik.http.routers.my-home-max-prod.tls=true"
+      - "traefik.http.routers.my-home-max-prod.tls.certresolver=letsencrypt"
+
+      # Port Nginx interne
+      - "traefik.http.services.my-home-max-prod.loadbalancer.server.port=80"
+
+    networks:
+      - max_network
+
+networks:
+  max_network:
+    external: true
