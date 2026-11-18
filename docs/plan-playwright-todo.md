@@ -3,7 +3,7 @@
 **Branche :** `feat/playwright-todo-e2e`  
 **Route cible :** `/todo` (`TodoPage`)  
 **Stack app :** React 19 + Vite 8 + TypeScript, données en `localStorage`  
-**État actuel :** aucun test e2e, Playwright non installé
+**État actuel :** implémenté (suite e2e + vidéo + screenshots forms)
 
 ---
 
@@ -282,14 +282,14 @@ Décision à prendre en phase develop : **phase A** sélecteurs existants ; **ph
 
 ## 12. Critères d’acceptation
 
-- [ ] Playwright installé et configuré dans le repo  
-- [ ] Au moins les specs groupes + tâches + 1 flow e2e  
-- [ ] **Chaque** submit de form métier (create/edit groupe & tâche) a un **screenshot avec données** avant envoi  
-- [ ] **Vidéo** générée pour les tests (notamment le flow complet)  
-- [ ] Tests isolés via reset/seed `localStorage`  
-- [ ] Scripts npm documentés  
-- [ ] Artefacts de run **non** versionnés  
-- [ ] Branche poussée, prête pour review / PR  
+- [x] Playwright installé et configuré dans le repo  
+- [x] Au moins les specs groupes + tâches + 1 flow e2e  
+- [x] **Chaque** submit de form métier (create/edit groupe & tâche) a un **screenshot avec données** avant envoi  
+- [x] **Vidéo** générée pour les tests (notamment le flow complet)  
+- [x] Tests isolés via reset/seed `localStorage`  
+- [x] Scripts npm documentés  
+- [x] Artefacts de run **non** versionnés  
+- [x] Branche poussée, prête pour review / PR  
 
 ---
 

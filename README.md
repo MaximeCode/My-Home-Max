@@ -1,3 +1,21 @@
+# My Home Max
+
+App React + TypeScript + Vite (budget, to-do list, courses).
+
+## Tests e2e (Playwright) — To-do List
+
+```bash
+npm run test:e2e:todo
+```
+
+- Vidéos : `test-results/` (par test)
+- Screenshots des forms remplis (avant submit) : `test-results/screenshots/`
+- Rapport HTML : `npm run test:e2e:report`
+
+Plan détaillé : [`docs/plan-playwright-todo.md`](docs/plan-playwright-todo.md)
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
