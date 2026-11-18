@@ -4,9 +4,11 @@
  * Stratégie `injectManifest` de vite-plugin-pwa :
  *   - `self.__WB_MANIFEST` est injecté par Workbox au build
  *   - Workbox gère le précache des assets statiques
- *   - Ce fichier gère en plus le scheduling des notifications de tâches
- *
- * Compilation : tsconfig.sw.json (lib: WebWorker, pas de DOM)
+ *   - Ce fichier gère le fallback setTimeout pour les notifications
+ *     (quand TimestampTrigger n'est pas supporté)
+ *   - Les notifications TimestampTrigger sont planifiées directement
+ *     depuis useNotifications.ts via registration.showNotification()
+ *     et ne passent pas par ce SW.
  */
 
 /// <reference lib="webworker" />
@@ -22,11 +24,10 @@ declare const self: ServiceWorkerGlobalScope
 self.skipWaiting()
 clientsClaim()
 cleanupOutdatedCaches()
-
-// __WB_MANIFEST est remplacé par la liste des assets au moment du build
 precacheAndRoute(self.__WB_MANIFEST)
 
-// ─── Notifications — scheduling ───────────────────────────────────────────────
+// ─── Notifications — fallback setTimeout ─────────────────────────────────────
+// Utilisé uniquement quand TimestampTrigger n'est pas disponible dans le navigateur.
 
 interface SchedulePayload {
   taskId: string
@@ -52,7 +53,6 @@ self.addEventListener('message', (event: ExtendableMessageEvent) => {
   if (message.type === 'SCHEDULE_NOTIFICATION') {
     const { taskId, title, body, delay } = message.payload
 
-    // Annuler un éventuel timer existant pour cette tâche
     const existing = scheduledTimers.get(taskId)
     if (existing !== undefined) clearTimeout(existing)
 
